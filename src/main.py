@@ -1,4 +1,4 @@
-""" Main module for the store segmentation project """
+"""Main module for the TDD kata"""
 
 import pandas as pd
 
@@ -13,4 +13,4 @@ def initial_segmentation(weekly_store_typo: pd.Series, intervention: int) -> str
     Returns:
         str: Store initial class
     """
-    return ""
+    return "M" if weekly_store_typo.nunique() == 1 else "X1"
