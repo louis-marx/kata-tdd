@@ -27,4 +27,3 @@ def test_initial_segmentation(data, expected):
     """Test the initial_segmentation function"""
     series = pd.Series(data, index=INDEX_RANGE)
     assert initial_segmentation(series, INTERVENTION) == expected
-    assert initial_segmentation(series, INTERVENTION) == expected
