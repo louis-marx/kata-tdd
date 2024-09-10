@@ -13,4 +13,11 @@ def initial_segmentation(weekly_store_typo: pd.Series, intervention: int) -> str
     Returns:
         str: Store initial class
     """
-    return "M" if weekly_store_typo.nunique() == 1 else "X1"
+    if weekly_store_typo.diff().nunique() == 1:
+        return "M"
+    if weekly_store_typo[weekly_store_typo.index < intervention].nunique() > 1:
+        return "X1"
+    if weekly_store_typo.diff().ne(0).sum() == 2:
+        pre, post = weekly_store_typo.unique()
+        return "B" if pre > post else "H"
+    return "X2"
